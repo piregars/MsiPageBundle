@@ -14,6 +14,9 @@ class PageAdmin extends Admin
     public function configureDataTable($builder)
     {
         $builder
+            ->add('title')
+            ->add('slug')
+            ->add('createdAt', 'date')
             ->add('', 'action')
         ;
     }
@@ -22,6 +25,7 @@ class PageAdmin extends Admin
     {
         $builder
             ->add('title')
+            ->add('layout')
         ;
     }
 }
