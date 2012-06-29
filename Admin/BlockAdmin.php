@@ -24,7 +24,17 @@ class BlockAdmin extends Admin
     public function configureForm($builder)
     {
         $builder
-            ->add('type')
+            ->add('type', 'choice', array(
+                'choices' => array(
+                    'msi_block.text.block.type' => 'Text',
+                    'msi_block.action.block.type' => 'Action',
+                ),
+            ))
         ;
+
+        if ($this->getObject()->getType()) {
+            $type = $this->getContainer()->get($this->getObject()->getType());
+            $type->buildForm($builder);
+        }
     }
 }
