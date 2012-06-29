@@ -8,13 +8,21 @@
     <parameters>
         <parameter key="msi_page.example.class">Msi\Bundle\PageBundle\Example</parameter>
     </parameters>
-
+    -->
     <services>
-        <service id="msi_page.example" class="%msi_page.example.class%">
-            <argument type="service" id="service_id" />
-            <argument>plain_value</argument>
-            <argument>%parameter_name%</argument>
+        <!-- Page Manager -->
+        <service id="msi_page.page_manager" class="Msi\Bundle\AdminBundle\Entity\ModelManager">
+            <argument type="service" id="msi_admin.entity_manager" />
+            <argument>Msi\Bundle\PageBundle\Entity\Page</argument>
+        </service>
+        <!-- Page Admin -->
+        <service id="msi_page_page_admin" parent="msi_admin.admin" class="Msi\Bundle\PageBundle\Admin\PageAdmin">
+            <argument />
+            <argument>MsiPageBundle</argument>
+            <call method="setModelManager">
+                <argument type="service" id="msi_page.page_manager" />
+            </call>
+            <tag name="msi.admin"></tag>
         </service>
     </services>
-    -->
 </container>
