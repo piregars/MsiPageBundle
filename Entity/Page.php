@@ -223,4 +223,9 @@ class Page
 
         return $text;
     }
+
+    public function __toString()
+    {
+        return $this->title;
+    }
 }
