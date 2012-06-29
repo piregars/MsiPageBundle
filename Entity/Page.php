@@ -50,7 +50,7 @@ class Page
     /**
      * @ORM\Column(type="boolean")
      */
-    protected $published = false;
+    protected $enabled;
 
     /**
      * @ORM\OneToMany(targetEntity="Block", mappedBy="page", cascade={"remove"})
@@ -71,15 +71,8 @@ class Page
     {
         $this->createdAt = new \DateTime();
         $this->updatedAt = new \DateTime();
+        $this->enabled = false;
         $this->blocks = new ArrayCollection();
-    }
-
-    /**
-     * @ORM\PrePersist()
-     */
-    public function prePersist()
-    {
-        $this->slug = self::slugify($this->title);
     }
 
     /**
@@ -88,7 +81,6 @@ class Page
     public function preUpdate()
     {
         $this->updatedAt = new \DateTime();
-        $this->slug = self::slugify($this->title);
     }
 
     public function addBlock($block)
@@ -111,6 +103,7 @@ class Page
     public function setTitle($title)
     {
         $this->title = $title;
+        $this->slug = self::slugify($this->title);
 
         return $this;
     }
@@ -151,14 +144,14 @@ class Page
         return $this;
     }
 
-    public function getPublished()
+    public function getEnabled()
     {
-        return $this->published;
+        return $this->enabled;
     }
 
-    public function setPublished($published)
+    public function setEnabled($enabled)
     {
-        $this->published = $published;
+        $this->enabled = $enabled;
 
         return $this;
     }
