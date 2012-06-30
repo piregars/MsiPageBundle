@@ -18,7 +18,7 @@ class PageController extends ContainerAware
     public function showAction()
     {
         $slug = $this->container->get('request')->attributes->get('slug');
-        $page = $this->container->get('msi_page_page_admin')->getModelManager()->findBy(array('a.slug' => $slug))->getQuery()->getSingleResult();
+        $page = $this->container->get('msi_page_page_admin')->getModelManager()->findBy(array('a.enabled' => true, 'a.slug' => $slug))->getQuery()->getSingleResult();
 
         return array('page' => $page);
     }

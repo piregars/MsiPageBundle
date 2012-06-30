@@ -27,6 +27,8 @@ class PageAdmin extends Admin
         $builder
             ->add('title')
             ->add('layout')
+            ->add('metaKeywords', 'textarea')
+            ->add('metaDescription', 'textarea')
         ;
     }
 }
