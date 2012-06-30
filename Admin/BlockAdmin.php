@@ -11,7 +11,7 @@ class BlockAdmin extends Admin
         $this->setSearchFields(array('type'));
     }
 
-    public function configureDataTable($builder)
+    public function configureTable($builder)
     {
         $builder
             ->add('enabled', 'bool')

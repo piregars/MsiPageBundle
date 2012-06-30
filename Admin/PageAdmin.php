@@ -11,7 +11,7 @@ class PageAdmin extends Admin
         $this->setSearchFields(array('title'));
     }
 
-    public function configureDataTable($builder)
+    public function configureTable($builder)
     {
         $builder
             ->add('enabled', 'bool')
