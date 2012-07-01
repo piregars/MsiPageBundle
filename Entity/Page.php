@@ -35,7 +35,23 @@ class Page
      * @ORM\Column()
      * @Assert\NotBlank()
      */
+    protected $template;
+
+    /**
+     * @ORM\Column()
+     * @Assert\NotBlank()
+     */
     protected $layout;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $css;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $js;
 
     /**
      * @ORM\Column(type="text", nullable=true, name="meta_keywords")
@@ -95,6 +111,30 @@ class Page
         return $this->blocks;
     }
 
+    public function getCss()
+    {
+        return $this->css;
+    }
+
+    public function setCss($css)
+    {
+        $this->css = $css;
+
+        return $this;
+    }
+
+    public function getJs()
+    {
+        return $this->js;
+    }
+
+    public function setJs($js)
+    {
+        $this->js = $js;
+
+        return $this;
+    }
+
     public function getTitle()
     {
         return $this->title;
@@ -128,6 +168,18 @@ class Page
     public function setMetaDescription($metaDescription)
     {
         $this->metaDescription = $metaDescription;
+
+        return $this;
+    }
+
+    public function getTemplate()
+    {
+        return $this->template;
+    }
+
+    public function setTemplate($template)
+    {
+        $this->template = $template;
 
         return $this;
     }

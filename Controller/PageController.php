@@ -13,13 +13,12 @@ class PageController extends ContainerAware
 {
     /**
      * @Route("/page/{slug}.html")
-     * @Template()
      */
     public function showAction()
     {
         $slug = $this->container->get('request')->attributes->get('slug');
         $page = $this->container->get('msi_page_page_admin')->getModelManager()->findBy(array('a.enabled' => true, 'a.slug' => $slug))->getQuery()->getSingleResult();
 
-        return array('page' => $page);
+        return $this->container->get('templating')->renderResponse($page->getTemplate(), array('page' => $page));
     }
 }

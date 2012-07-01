@@ -28,6 +28,7 @@ class BlockAdmin extends Admin
                 'choices' => array(
                     'msi_block.text.block.type' => 'Text',
                     'msi_block.action.block.type' => 'Action',
+                    'msi_block.template.block.type' => 'Template',
                 ),
             ))
         ;
