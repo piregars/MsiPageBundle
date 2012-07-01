@@ -3,14 +3,10 @@
 namespace Msi\Bundle\PageBundle\Admin;
 
 use Msi\Bundle\AdminBundle\Admin\Admin;
+use Msi\Bundle\PageBundle\Form\Type\PageTranslationType;
 
 class PageAdmin extends Admin
 {
-    public function configure()
-    {
-        $this->setSearchFields(array('title'));
-    }
-
     public function configureTable($builder)
     {
         $builder
@@ -25,13 +21,13 @@ class PageAdmin extends Admin
     public function configureForm($builder)
     {
         $builder
-            ->add('title')
             ->add('template')
             ->add('layout')
             ->add('css', 'textarea')
             ->add('js', 'textarea')
-            ->add('metaKeywords', 'textarea')
-            ->add('metaDescription', 'textarea')
+            ->add('translations', 'collection', array('attr' => array('class' => 'lead bold'), 'type' => new PageTranslationType(), 'options' => array(
+                'attr' => array('class' => 'lead bold'),
+            )));
         ;
     }
 }

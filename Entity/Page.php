@@ -24,17 +24,6 @@ class Page
      * @ORM\Column()
      * @Assert\NotBlank()
      */
-    protected $title;
-
-    /**
-     * @ORM\Column()
-     */
-    protected $slug;
-
-    /**
-     * @ORM\Column()
-     * @Assert\NotBlank()
-     */
     protected $template;
 
     /**
@@ -52,16 +41,6 @@ class Page
      * @ORM\Column(type="text", nullable=true)
      */
     protected $js;
-
-    /**
-     * @ORM\Column(type="text", nullable=true, name="meta_keywords")
-     */
-    protected $metaKeywords;
-
-    /**
-     * @ORM\Column(type="text", nullable=true, name="meta_description")
-     */
-    protected $metaDescription;
 
     /**
      * @ORM\Column(type="boolean")
@@ -83,12 +62,18 @@ class Page
      */
     protected $updatedAt;
 
+    /**
+     * @ORM\OneToMany(targetEntity="PageTranslation", mappedBy="page", cascade={"persist", "remove"})
+     */
+    protected $translations;
+
     public function __construct()
     {
         $this->createdAt = new \DateTime();
         $this->updatedAt = new \DateTime();
         $this->enabled = false;
         $this->blocks = new ArrayCollection();
+        $this->translations = new ArrayCollection();
     }
 
     /**
@@ -135,41 +120,16 @@ class Page
         return $this;
     }
 
-    public function getTitle()
+    public function addTranslation($translation)
     {
-        return $this->title;
-    }
-
-    public function setTitle($title)
-    {
-        $this->title = $title;
-        $this->slug = self::slugify($this->title);
+        $this->translations[$translation->getLocale()] = $translation;
 
         return $this;
     }
 
-    public function getMetaKeywords()
+    public function getTranslations()
     {
-        return $this->metaKeywords;
-    }
-
-    public function setMetaKeywords($metaKeywords)
-    {
-        $this->metaKeywords = $metaKeywords;
-
-        return $this;
-    }
-
-    public function getMetaDescription()
-    {
-        return $this->metaDescription;
-    }
-
-    public function setMetaDescription($metaDescription)
-    {
-        $this->metaDescription = $metaDescription;
-
-        return $this;
+        return $this->translations;
     }
 
     public function getTemplate()
@@ -208,18 +168,6 @@ class Page
         return $this;
     }
 
-    public function getSlug()
-    {
-        return $this->slug;
-    }
-
-    public function setSlug($slug)
-    {
-        $this->slug = $slug;
-
-        return $this;
-    }
-
     public function getCreatedAt()
     {
         return $this->createdAt;
@@ -249,6 +197,11 @@ class Page
         return $this->id;
     }
 
+    public function __toString()
+    {
+        return $this->getTitle();
+    }
+
     static public function slugify($text)
     {
         // replace non letter or digits by -
@@ -276,8 +229,22 @@ class Page
         return $text;
     }
 
-    public function __toString()
+    public function getTitle()
     {
-        return $this->title;
+        return $this->getTranslations()->first() ? $this->getTranslations()->first()->getTitle() : '';
     }
+
+    public function getSlug()
+    {
+        return $this->getTranslations()->first() ? $this->getTranslations()->first()->getSlug() : '';
+    }
+
+    // public function findTranslation($locale)
+    // {
+    //     $translations = $this->getTranslations()->filter(function($translation) use ($locale) {
+    //         return $locale === $translation->getLocale();
+    //     });
+
+    //     return $translations->first();
+    // }
 }
