@@ -14,6 +14,7 @@
         <service id="msi_page.page_manager" class="Msi\Bundle\AdminBundle\Entity\ModelManager">
             <argument type="service" id="msi_admin.entity_manager" />
             <argument>Msi\Bundle\PageBundle\Entity\Page</argument>
+            <argument type="service" id="session" />
         </service>
         <!-- Page Admin -->
         <service id="msi_page_page_admin" parent="msi_admin.admin" class="Msi\Bundle\PageBundle\Admin\PageAdmin">
@@ -31,6 +32,7 @@
         <service id="msi_page.block_manager" class="Msi\Bundle\AdminBundle\Entity\ModelManager">
             <argument type="service" id="msi_admin.entity_manager" />
             <argument>Msi\Bundle\PageBundle\Entity\Block</argument>
+            <argument type="service" id="session" />
         </service>
         <!-- Block Admin -->
         <service id="msi_page_block_admin" parent="msi_admin.admin" class="Msi\Bundle\PageBundle\Admin\BlockAdmin">

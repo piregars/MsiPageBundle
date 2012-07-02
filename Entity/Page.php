@@ -6,14 +6,12 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 
-use Msi\Bundle\AdminBundle\Entity\Translatable;
-
 /**
  * @ORM\Table(name="page")
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */
-class Page extends Translatable
+class Page
 {
     /**
      * @ORM\Column(type="integer")
@@ -134,6 +132,11 @@ class Page extends Translatable
         return $this->translations;
     }
 
+    public function getTranslation()
+    {
+        return $this->translations[0];
+    }
+
     public function getTemplate()
     {
         return $this->template;
@@ -201,7 +204,7 @@ class Page extends Translatable
 
     public function __toString()
     {
-        return $this->getTitle();
+        return $this->getTranslation()->getTitle();
     }
 
     static public function slugify($text)

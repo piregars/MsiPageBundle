@@ -17,9 +17,8 @@ class PageController extends ContainerAware
     public function showAction()
     {
         $slug = $this->container->get('request')->attributes->get('slug');
-        $page = $this->container->get('msi_page_page_admin')->getModelManager()->findBy(array('a.enabled' => true, 't.locale' => $this->container->get('session')->getLocale(), 't.slug' => $slug), array('a.translations' => 't'))->getQuery()->getSingleResult();
 
-        $page->setLocale($this->container->get('session')->getLocale());
+        $page = $this->container->get('msi_page_page_admin')->getModelManager()->findBy(array('a.enabled' => true, 't.slug' => $slug))->getQuery()->getSingleResult();
 
         return $this->container->get('templating')->renderResponse($page->getTemplate(), array('page' => $page));
     }
