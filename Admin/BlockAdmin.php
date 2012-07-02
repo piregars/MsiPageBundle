@@ -18,6 +18,7 @@ class BlockAdmin extends Admin
             ->add('setting.name', 'text', array('label' => 'name'))
             ->add('type')
             ->add('updatedAt', 'date')
+            ->add('id')
             ->add('', 'action')
         ;
     }
