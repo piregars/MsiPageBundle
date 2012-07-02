@@ -42,7 +42,7 @@ class PageTranslation
     /**
      * @ORM\ManyToOne(targetEntity="Page", inversedBy="translations")
      */
-    protected $page;
+    protected $object;
 
     /**
      * @ORM\Column()
@@ -54,14 +54,14 @@ class PageTranslation
         return $this->id;
     }
 
-    public function getPage()
+    public function getObject()
     {
-        return $this->page;
+        return $this->object;
     }
 
-    public function setPage($page)
+    public function setObject($object)
     {
-        $this->page = $page;
+        $this->object = $object;
 
         return $this;
     }

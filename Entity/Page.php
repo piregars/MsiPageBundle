@@ -63,7 +63,7 @@ class Page
     protected $updatedAt;
 
     /**
-     * @ORM\OneToMany(targetEntity="PageTranslation", mappedBy="page", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="PageTranslation", mappedBy="object", cascade={"persist", "remove"})
      */
     protected $translations;
 
@@ -123,6 +123,8 @@ class Page
     public function addTranslation($translation)
     {
         $this->translations[] = $translation;
+
+        $translation->setObject($this);
 
         return $this;
     }
