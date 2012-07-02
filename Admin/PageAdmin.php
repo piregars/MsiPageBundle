@@ -7,6 +7,11 @@ use Msi\Bundle\PageBundle\Form\Type\PageTranslationType;
 
 class PageAdmin extends Admin
 {
+    public function configure()
+    {
+        $this->setLocales(array('fr', 'en'));
+    }
+
     public function configureTable($builder)
     {
         $builder

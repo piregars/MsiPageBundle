@@ -6,12 +6,14 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 
+use Msi\Bundle\AdminBundle\Entity\Translatable;
+
 /**
  * @ORM\Table(name="page")
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */
-class Page
+class Page extends Translatable
 {
     /**
      * @ORM\Column(type="integer")
@@ -122,7 +124,7 @@ class Page
 
     public function addTranslation($translation)
     {
-        $this->translations[$translation->getLocale()] = $translation;
+        $this->translations[] = $translation;
 
         return $this;
     }
@@ -228,23 +230,4 @@ class Page
 
         return $text;
     }
-
-    public function getTitle()
-    {
-        return $this->getTranslations()->first() ? $this->getTranslations()->first()->getTitle() : '';
-    }
-
-    public function getSlug()
-    {
-        return $this->getTranslations()->first() ? $this->getTranslations()->first()->getSlug() : '';
-    }
-
-    // public function findTranslation($locale)
-    // {
-    //     $translations = $this->getTranslations()->filter(function($translation) use ($locale) {
-    //         return $locale === $translation->getLocale();
-    //     });
-
-    //     return $translations->first();
-    // }
 }

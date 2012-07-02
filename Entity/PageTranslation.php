@@ -20,14 +20,12 @@ class PageTranslation
     protected $id;
 
     /**
-     * @ORM\Column()
-     * @Assert\NotBlank()
+     * @ORM\Column(nullable=true)
      */
     protected $title;
 
     /**
-     * @ORM\Column()
-     * @Assert\NotBlank()
+     * @ORM\Column(nullable=true)
      */
     protected $slug;
 
