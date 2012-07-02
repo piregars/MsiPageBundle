@@ -14,11 +14,11 @@ class BlockAdmin extends Admin
     public function configureTable($builder)
     {
         $builder
+            ->add('id')
             ->add('enabled', 'bool')
             ->add('setting.name', 'text', array('label' => 'name'))
             ->add('type')
             ->add('updatedAt', 'date')
-            ->add('id')
             ->add('', 'action')
         ;
     }

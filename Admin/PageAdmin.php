@@ -10,6 +10,7 @@ class PageAdmin extends Admin
     public function configureTable($builder)
     {
         $builder
+            ->add('id')
             ->add('enabled', 'bool')
             ->add('title')
             ->add('slug')
