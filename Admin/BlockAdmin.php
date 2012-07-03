@@ -35,9 +35,11 @@ class BlockAdmin extends Admin
             ))
         ;
 
-        if ($this->getObject()->getType()) {
-            $type = $this->getContainer()->get($this->getObject()->getType());
-            $type->buildForm($builder);
+        $typeId = $this->getObject()->getType();
+
+        if ($typeId) {
+            $blockType = $this->container->get($typeId);
+            $blockType->buildForm($builder);
         }
     }
 }
