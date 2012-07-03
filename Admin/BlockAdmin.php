@@ -11,11 +11,11 @@ class BlockAdmin extends Admin
         $this->setSearchFields(array('type'));
     }
 
-    public function configureTable($builder)
+    public function buildTable($builder)
     {
         $builder
             ->add('id')
-            ->add('enabled', 'bool')
+            ->add('enabled', 'logical')
             ->add('setting.name', 'text', array('label' => 'name'))
             ->add('type')
             ->add('updatedAt', 'date')
@@ -23,7 +23,7 @@ class BlockAdmin extends Admin
         ;
     }
 
-    public function configureForm($builder)
+    public function buildForm($builder)
     {
         $builder
             ->add('type', 'choice', array(

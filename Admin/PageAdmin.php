@@ -7,11 +7,11 @@ use Msi\Bundle\PageBundle\Form\Type\PageTranslationType;
 
 class PageAdmin extends Admin
 {
-    public function configureTable($builder)
+    public function buildTable($builder)
     {
         $builder
             ->add('id')
-            ->add('enabled', 'bool')
+            ->add('enabled', 'logical')
             ->add('title')
             ->add('slug')
             ->add('updatedAt', 'date')
@@ -19,7 +19,7 @@ class PageAdmin extends Admin
         ;
     }
 
-    public function configureForm($builder)
+    public function buildForm($builder)
     {
         $builder
             ->add('template')
