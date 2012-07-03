@@ -129,6 +129,13 @@ class Page
         return $this;
     }
 
+    public function setTranslations($translations)
+    {
+        $this->translations = $translations;
+
+        return $this;
+    }
+
     public function getTranslations()
     {
         $fixedTranslations = new ArrayCollection();
