@@ -138,17 +138,12 @@ class Page
 
     public function getTranslations()
     {
-        $fixedTranslations = new ArrayCollection();
-        foreach ($this->translations as $t) {
-            $fixedTranslations[$t->getLocale()] = $t;
-        }
-
-        return $fixedTranslations;
+        return $this->translations;
     }
 
     public function getTranslation()
     {
-        return $this->translations[0];
+        return $this->translations->first();
     }
 
     public function getTemplate()
