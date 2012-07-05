@@ -20,9 +20,17 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('msi_page');
 
-        // Here you should define the parameters that are allowed to
-        // configure your bundle. See the documentation linked above for
-        // more information on that topic.
+        $rootNode
+            ->children()
+                ->arrayNode('template_choices')
+                ->useAttributeAsKey('name')
+                ->prototype('scalar')->end()
+            ->end()
+                ->arrayNode('layout_choices')
+                ->useAttributeAsKey('name')
+                ->prototype('scalar')->end()
+            ->end()
+        ;
 
         return $treeBuilder;
     }

@@ -22,6 +22,9 @@ class MsiPageExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
+        $container->setParameter('msi_page.template_choices', $config['template_choices']);
+        $container->setParameter('msi_page.layout_choices', $config['layout_choices']);
+
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
     }
