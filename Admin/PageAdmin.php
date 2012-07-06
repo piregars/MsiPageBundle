@@ -26,7 +26,7 @@ class PageAdmin extends Admin
             ->add('css', 'textarea')
             ->add('js', 'textarea')
             ->add('translations', 'collection', array('attr' => array('class' => 'lead bold'), 'type' => new PageTranslationType(), 'options' => array(
-                'attr' => array('class' => 'lead bold'),
+                'label' => ' ',
             )));
         ;
     }
