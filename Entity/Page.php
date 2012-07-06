@@ -27,12 +27,6 @@ class Page
     protected $template;
 
     /**
-     * @ORM\Column()
-     * @Assert\NotBlank()
-     */
-    protected $layout;
-
-    /**
      * @ORM\Column(type="text", nullable=true)
      */
     protected $css;
@@ -154,18 +148,6 @@ class Page
     public function setTemplate($template)
     {
         $this->template = $template;
-
-        return $this;
-    }
-
-    public function getLayout()
-    {
-        return $this->layout;
-    }
-
-    public function setLayout($layout)
-    {
-        $this->layout = $layout;
 
         return $this;
     }

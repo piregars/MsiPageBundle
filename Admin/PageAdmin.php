@@ -23,7 +23,6 @@ class PageAdmin extends Admin
     {
         $builder
             ->add('template', 'choice', array('choices' => $this->container->getParameter('msi_page.template_choices')))
-            ->add('layout', 'choice', array('choices' => $this->container->getParameter('msi_page.layout_choices')))
             ->add('css', 'textarea')
             ->add('js', 'textarea')
             ->add('translations', 'collection', array('attr' => array('class' => 'lead bold'), 'type' => new PageTranslationType(), 'options' => array(
