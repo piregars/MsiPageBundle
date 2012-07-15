@@ -42,6 +42,11 @@ class Page
     protected $enabled;
 
     /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $home;
+
+    /**
      * @ORM\OneToMany(targetEntity="Block", mappedBy="page", cascade={"remove"})
      */
     protected $blocks;
@@ -110,6 +115,18 @@ class Page
     public function setJs($js)
     {
         $this->js = $js;
+
+        return $this;
+    }
+
+    public function getHome()
+    {
+        return $this->home;
+    }
+
+    public function setHome($home)
+    {
+        $this->home = $home;
 
         return $this;
     }
