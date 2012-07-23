@@ -225,7 +225,7 @@ class Page
 
         // transliterate
         if (function_exists('iconv')) {
-            $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+            $text = iconv('UTF-8', 'us-ascii//TRANSLIT', $text);
         }
 
         // lowercase
