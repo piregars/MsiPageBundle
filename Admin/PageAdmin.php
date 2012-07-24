@@ -16,7 +16,7 @@ class PageAdmin extends Admin
     {
         $builder
             ->add('id')
-            ->add('enabled', 'logical')
+            ->add('enabled', 'boolean')
             ->add('title')
             ->add('slug')
             ->add('updatedAt', 'date')

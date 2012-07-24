@@ -15,7 +15,7 @@ class BlockAdmin extends Admin
     {
         $builder
             ->add('id')
-            ->add('enabled', 'logical')
+            ->add('enabled', 'boolean')
             ->add('setting.name', 'text', array('label' => 'name'))
             ->add('type')
             ->add('updatedAt', 'date')
