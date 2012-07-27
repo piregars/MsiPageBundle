@@ -12,7 +12,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class PageController extends ContainerAware
 {
     /**
-     * @Route("/{_locale}/{slug}.html")
+     * @Route("/{_locale}/{slug}")
+     * @Route("/{_locale}/", name="msi_page_page_show_home")
      */
     public function showAction()
     {
