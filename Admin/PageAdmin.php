@@ -31,7 +31,7 @@ class PageAdmin extends Admin
             ->add('home', 'checkbox')
             ->add('css', 'textarea')
             ->add('js', 'textarea')
-            ->add('translations', 'collection', array('attr' => array('class' => 'lead bold'), 'type' => new PageTranslationType(), 'options' => array(
+            ->add('translations', 'collection', array('label' => ' ', 'type' => new PageTranslationType(), 'options' => array(
                 'label' => ' ',
             )));
         ;
