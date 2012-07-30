@@ -5,13 +5,14 @@ namespace Msi\Bundle\PageBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
+use Msi\Bundle\AdminBundle\Entity\Translatable;
 
 /**
  * @ORM\Table(name="page")
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */
-class Page
+class Page extends Translatable
 {
     /**
      * @ORM\Column(type="integer")
@@ -66,7 +67,7 @@ class Page
      */
     protected $translations;
 
-    public function __construct()
+    public function __construct($locales)
     {
         $this->createdAt = new \DateTime();
         $this->updatedAt = new \DateTime();
@@ -74,11 +75,7 @@ class Page
         $this->blocks = new ArrayCollection();
         $this->translations = new ArrayCollection();
 
-        foreach (array('en', 'fr') as $locale) {
-            $translation = new PageTranslation();
-            $translation->setLocale($locale)->setObject($this);
-            $this->getTranslations()->add($translation);
-        }
+        parent::__construct($locales);
     }
 
     /**
@@ -135,23 +132,6 @@ class Page
         $this->home = $home;
 
         return $this;
-    }
-
-    public function setTranslations($translations)
-    {
-        $this->translations = $translations;
-
-        return $this;
-    }
-
-    public function getTranslations()
-    {
-        return $this->translations;
-    }
-
-    public function getTranslation()
-    {
-        return $this->translations->first();
     }
 
     public function getTemplate()
