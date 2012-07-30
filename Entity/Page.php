@@ -75,7 +75,7 @@ class Page extends Translatable
         $this->blocks = new ArrayCollection();
         $this->translations = new ArrayCollection();
 
-        parent::__construct($locales);
+        $this->createTranslations($locales);
     }
 
     /**
