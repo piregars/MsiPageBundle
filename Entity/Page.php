@@ -73,6 +73,12 @@ class Page
         $this->enabled = false;
         $this->blocks = new ArrayCollection();
         $this->translations = new ArrayCollection();
+
+        foreach (array('en', 'fr') as $locale) {
+            $translation = new PageTranslation();
+            $translation->setLocale($locale)->setObject($this);
+            $this->getTranslations()->add($translation);
+        }
     }
 
     /**
@@ -127,15 +133,6 @@ class Page
     public function setHome($home)
     {
         $this->home = $home;
-
-        return $this;
-    }
-
-    public function addTranslation($translation)
-    {
-        $this->translations[] = $translation;
-
-        $translation->setObject($this);
 
         return $this;
     }
