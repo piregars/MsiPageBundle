@@ -9,7 +9,7 @@ class PageAdmin extends Admin
 {
     public function configure()
     {
-        $this->setSearchFields(array('title'));
+        $this->likeFields = array('title');
     }
 
     public function buildTable($builder)
