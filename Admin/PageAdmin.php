@@ -18,7 +18,6 @@ class PageAdmin extends Admin
             ->add('id')
             ->add('enabled', 'boolean')
             ->add('title')
-            ->add('slug')
             ->add('updatedAt', 'date')
             ->add('', 'action')
         ;

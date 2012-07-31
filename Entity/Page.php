@@ -48,7 +48,7 @@ class Page extends Translatable
     protected $home;
 
     /**
-     * @ORM\OneToMany(targetEntity="Block", mappedBy="page", cascade={"remove"})
+     * @ORM\OneToMany(targetEntity="PageBlock", mappedBy="page", cascade={"remove"})
      */
     protected $blocks;
 

@@ -12,7 +12,7 @@ use Msi\Bundle\BlockBundle\Entity\Block as BaseBlock;
  * @ORM\Table(name="page_block")
  * @ORM\Entity
  */
-class Block extends BaseBlock
+class PageBlock extends BaseBlock
 {
     /**
      * @ORM\Column(type="integer")

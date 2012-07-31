@@ -4,7 +4,7 @@ namespace Msi\Bundle\PageBundle\Admin;
 
 use Msi\Bundle\AdminBundle\Admin\Admin;
 
-class BlockAdmin extends Admin
+class PageBlockAdmin extends Admin
 {
     public function configure()
     {
