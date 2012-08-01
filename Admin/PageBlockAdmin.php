@@ -25,21 +25,21 @@ class PageBlockAdmin extends Admin
 
     public function buildForm($builder)
     {
-        $builder
-            ->add('type', 'choice', array(
-                'choices' => array(
-                    'msi_block.text.block.type' => 'Text',
-                    'msi_block.action.block.type' => 'Action',
-                    'msi_block.template.block.type' => 'Template',
-                ),
-            ))
-        ;
-
         $typeId = $this->getObject()->getType();
 
         if ($typeId) {
             $blockType = $this->container->get($typeId);
             $blockType->buildForm($builder);
+        } else {
+            $builder
+                ->add('type', 'choice', array(
+                    'choices' => array(
+                        'msi_block.block.text.type' => 'Text',
+                        'msi_block.block.action.type' => 'Action',
+                        'msi_block.block.template.type' => 'Template',
+                    ),
+                ))
+            ;
         }
     }
 }
