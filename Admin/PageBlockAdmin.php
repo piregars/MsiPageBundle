@@ -11,7 +11,7 @@ class PageBlockAdmin extends Admin
         $this->likeFields = array('type');
     }
 
-    public function buildTable($builder)
+    public function buildIndexTable($builder)
     {
         $builder
             ->add('id')

@@ -12,7 +12,7 @@ class PageAdmin extends Admin
         $this->likeFields = array('title');
     }
 
-    public function buildTable($builder)
+    public function buildIndexTable($builder)
     {
         $builder
             ->add('id')
