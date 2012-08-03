@@ -67,15 +67,13 @@ class Page extends Translatable
      */
     protected $translations;
 
-    public function __construct($locales)
+    public function __construct()
     {
         $this->createdAt = new \DateTime();
         $this->updatedAt = new \DateTime();
         $this->enabled = false;
         $this->blocks = new ArrayCollection();
         $this->translations = new ArrayCollection();
-
-        $this->createTranslations($locales);
     }
 
     /**

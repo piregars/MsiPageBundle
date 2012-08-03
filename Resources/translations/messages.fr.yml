@@ -1,2 +1,3 @@
-Page: Page|Pages
-PageBlock: Bloc|Blocs
+entity:
+    Page: Page|Pages
+    PageBlock: Bloc|Blocs
