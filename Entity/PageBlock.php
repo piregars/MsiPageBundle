@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Msi\Bundle\BlockBundle\Entity\Block as BaseBlock;
 
 /**
- * @ORM\Table(name="page_block")
+ * @ORM\Table(name="msi_page_block")
  * @ORM\Entity
  */
 class PageBlock extends BaseBlock
