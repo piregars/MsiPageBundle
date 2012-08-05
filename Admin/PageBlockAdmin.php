@@ -16,7 +16,7 @@ class PageBlockAdmin extends Admin
         $builder
             ->add('id')
             ->add('enabled', 'boolean')
-            ->add('setting.name', 'text', array('label' => 'name'))
+            ->add('setting.name', 'text', array('label' => 'position'))
             ->add('type')
             ->add('updatedAt', 'date')
             ->add('', 'action')
