@@ -8,7 +8,7 @@ class PageBlockAdmin extends Admin
 {
     public function configure()
     {
-        $this->likeFields = array('type');
+        $this->searchFields = array('type', 'name');
     }
 
     public function buildIndexTable($builder)
