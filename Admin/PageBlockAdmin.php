@@ -19,7 +19,7 @@ class PageBlockAdmin extends Admin
             ->add('setting.name', 'text', array('label' => 'position'))
             ->add('pages', 'collection')
             ->add('updatedAt', 'date')
-            ->add('', 'action', array('actions' => array('<i class="icon-move"></i>' => '#')))
+            ->add('', 'action')
         ;
     }
 
