@@ -3,6 +3,7 @@
 namespace Msi\Bundle\PageBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -20,12 +21,14 @@ class PageTranslation
     protected $id;
 
     /**
+     * @Gedmo\Sluggable(slugField="slug")
      * @ORM\Column()
      * @Assert\NotBlank()
      */
     protected $title;
 
     /**
+     * @Gedmo\Slug
      * @ORM\Column()
      */
     protected $slug;
@@ -87,7 +90,6 @@ class PageTranslation
     public function setTitle($title)
     {
         $this->title = $title;
-        $this->slug = Page::slugify($this->title);
 
         return $this;
     }
