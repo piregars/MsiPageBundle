@@ -43,6 +43,7 @@ class PageBlockAdmin extends Admin
                 ))
             ;
         }
+        $builder->add('pages', 'entity', array('multiple' => true, 'class' => 'MsiPageBundle:Page', 'attr' => array('class' => 'chosenify')));
     }
 
     public function buildFilterForm($builder)
