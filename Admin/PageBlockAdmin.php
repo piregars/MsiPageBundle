@@ -16,6 +16,7 @@ class PageBlockAdmin extends Admin
         $builder
             ->add('id')
             ->add('enabled', 'boolean')
+            ->add('name')
             ->add('setting.name', 'text', array('label' => 'position'))
             ->add('type')
             ->add('updatedAt', 'date')
@@ -42,5 +43,15 @@ class PageBlockAdmin extends Admin
                 ))
             ;
         }
+    }
+
+    public function buildFilterForm($builder)
+    {
+        $builder->add('pages', 'entity', array(
+            'multiple' => true,
+            'class' => 'MsiPageBundle:Page',
+            'attr' => array('data-placeholder' => '-- Page --', 'class' => 'chosenify'),
+            'label' => ' ',
+        ));
     }
 }

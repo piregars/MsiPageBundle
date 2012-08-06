@@ -19,9 +19,7 @@
         <!-- Page Admin -->
         <service id="msi_page_page_admin" parent="msi_admin.admin" class="Msi\Bundle\PageBundle\Admin\PageAdmin">
             <argument type="service" id="msi_page.page_manager" />
-            <call method="setChild">
-                <argument type="service" id="msi_page_page_block_admin" />
-            </call>
+
             <tag name="msi.admin"></tag>
         </service>
         <!-- PageBlock Manager -->
@@ -33,9 +31,6 @@
         <!-- PageBlock Admin -->
         <service id="msi_page_page_block_admin" parent="msi_admin.admin" class="Msi\Bundle\PageBundle\Admin\PageBlockAdmin">
             <argument type="service" id="msi_page.page_block_manager" />
-            <call method="setParent">
-                <argument type="service" id="msi_page_page_admin" />
-            </call>
             <tag name="msi.admin"></tag>
         </service>
     </services>
