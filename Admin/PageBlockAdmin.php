@@ -50,7 +50,7 @@ class PageBlockAdmin extends Admin
         $builder->add('pages', 'entity', array(
             'multiple' => true,
             'class' => 'MsiPageBundle:Page',
-            'attr' => array('data-placeholder' => '-- Page --', 'class' => 'chosenify'),
+            'attr' => array('data-placeholder' => '-- '.$this->container->get('translator')->transchoice('entity.Page', 2).' --', 'class' => 'chosenify'),
             'label' => ' ',
         ));
     }

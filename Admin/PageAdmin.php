@@ -36,4 +36,15 @@ class PageAdmin extends Admin
             ->add('blocks', 'entity', array('multiple' => true, 'class' => 'MsiPageBundle:PageBlock', 'attr' => array('class' => 'chosenify')))
         ;
     }
+
+    public function buildFilterForm($builder)
+    {
+        $builder->add('blocks', 'entity', array(
+            'multiple' => true,
+            'class' => 'MsiPageBundle:PageBlock',
+            'attr' => array('data-placeholder' => '-- '.$this->container->get('translator')->transchoice('entity.PageBlock', 2).' --', 'class' => 'chosenify'),
+            'label' => ' ',
+        ));
+    }
+
 }
