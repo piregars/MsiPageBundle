@@ -85,16 +85,16 @@ class Page extends Translatable
         $this->updatedAt = new \DateTime();
     }
 
-    public function addBlock($block)
-    {
-        $this->blocks[] = $block;
-
-        return $this;
-    }
-
     public function getBlocks()
     {
         return $this->blocks;
+    }
+
+    public function setBlocks($blocks)
+    {
+        $this->blocks = $blocks;
+
+        return $this;
     }
 
     public function getCss()

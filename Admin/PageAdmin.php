@@ -32,7 +32,7 @@ class PageAdmin extends Admin
             ->add('translations', 'collection', array('label' => ' ', 'type' => new PageTranslationType(), 'options' => array(
                 'label' => ' ',
             )))
-            ->add('blocks', 'entity', array('multiple' => true, 'class' => 'MsiPageBundle:PageBlock', 'attr' => array('class' => 'chosenify')))
+            // ->add('blocks', 'entity', array('expanded' => true, 'multiple' => true, 'class' => 'MsiPageBundle:PageBlock'))
         ;
     }
 
