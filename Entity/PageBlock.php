@@ -22,24 +22,35 @@ class PageBlock extends BaseBlock
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Page", inversedBy="blocks")
+     * @ORM\ManyToMany(targetEntity="Page", mappedBy="blocks", cascade={"persist"})
      */
-    protected $page;
+    protected $pages;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->pages = new ArrayCollection();
+    }
 
     public function getId()
     {
         return $this->id;
     }
 
-    public function getPage()
+    public function getPages()
     {
-        return $this->page;
+        return $this->pages;
     }
 
-    public function setPage($page)
+    public function setPages($pages)
     {
-        $this->page = $page;
+        $this->pages = $pages;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return 'Block '.$this->id;
     }
 }

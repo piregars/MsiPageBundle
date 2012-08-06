@@ -32,7 +32,7 @@ class PageAdmin extends Admin
             ->add('js', 'textarea')
             ->add('translations', 'collection', array('label' => ' ', 'type' => new PageTranslationType(), 'options' => array(
                 'label' => ' ',
-            )));
+            )))
         ;
     }
 }

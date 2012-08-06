@@ -25,8 +25,9 @@ class PageBlockAdmin extends Admin
 
     public function buildForm($builder)
     {
-        $typeId = $this->getEntity()->getType();
+        $builder->add('name');
 
+        $typeId = $this->getEntity()->getType();
         if ($typeId) {
             $blockType = $this->container->get($typeId);
             $blockType->buildForm($builder);
