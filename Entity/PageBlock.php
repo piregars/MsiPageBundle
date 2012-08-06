@@ -22,7 +22,8 @@ class PageBlock extends BaseBlock
     protected $id;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Page", mappedBy="blocks", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="Page", inversedBy="blocks", cascade={"persist"})
+     * @ORM\JoinTable(name="pages_blocks")
      */
     protected $pages;
 

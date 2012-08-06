@@ -48,8 +48,7 @@ class Page extends Translatable
     protected $home;
 
     /**
-     * @ORM\ManyToMany(targetEntity="PageBlock", inversedBy="pages", cascade={"persist"})
-     * @ORM\JoinTable(name="pages_blocks")
+     * @ORM\ManyToMany(targetEntity="PageBlock", mappedBy="pages", cascade={"persist"})
      */
     protected $blocks;
 
