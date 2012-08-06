@@ -14,13 +14,12 @@ class PageBlockAdmin extends Admin
     public function buildIndexTable($builder)
     {
         $builder
-            ->add('id')
             ->add('enabled', 'boolean')
             ->add('name')
             ->add('setting.name', 'text', array('label' => 'position'))
-            ->add('type')
+            ->add('pages', 'collection')
             ->add('updatedAt', 'date')
-            ->add('', 'action')
+            ->add('', 'action', array('actions' => array('<i class="icon-move"></i>' => '#')))
         ;
     }
 

@@ -15,7 +15,6 @@ class PageAdmin extends Admin
     public function buildIndexTable($builder)
     {
         $builder
-            ->add('id')
             ->add('enabled', 'boolean')
             ->add('title')
             ->add('updatedAt', 'date')
