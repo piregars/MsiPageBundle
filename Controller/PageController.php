@@ -13,20 +13,20 @@ class PageController extends ContainerAware
     public function showAction()
     {
         $slug = $this->container->get('request')->attributes->get('slug');
+        $criteria = array('a.enabled' => true);
 
-        try {
-            if ($slug) {
-                $page = $this->container->get('msi_page_page_admin')->getModelManager()->findBy(array('a.enabled' => true, 't.slug' => $slug), array('a.blocks' => 'b'), array('b.position' => 'ASC'))->getQuery()->getOneOrNullResult();
-            } else {
-                $page = $this->container->get('msi_page_page_admin')->getModelManager()->findBy(array('a.enabled' => true, 'a.home' => true), array('a.blocks' => 'b'), array('b.position' => 'ASC'))->getQuery()->getOneOrNullResult();
-            }
-        } catch (NonUniqueResultException $e) {
-
+        if ($slug) {
+            $criteria['t.slug'] = $slug;
+        } else {
+            $criteria['a.home'] = true;
         }
+        $page = $this->container->get('msi_page_page_admin')->getModelManager()->findBy($criteria, array('a.blocks' => 'b'), array('b.position' => 'ASC'))->getQuery()->getResult();
 
-        if (!$page) {
+        if (!isset($page[0])) {
             throw new NotFoundHttpException();
         }
+
+        $page = $page[0];
 
         return $this->container->get('templating')->renderResponse($page->getTemplate(), array('page' => $page));
     }

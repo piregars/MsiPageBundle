@@ -17,6 +17,10 @@ class PageAdmin extends Admin
         $builder
             ->add('enabled', 'boolean')
             ->add('title')
+            ->add('home', 'boolean', array(
+                'label_true' => '<span class="badge badge-success"><i class="icon-home icon-white"><span class="hide">1</span></i></span>',
+                'label_false' => '<span class="badge"><i class="icon-home icon-white"><span class="hide">0</span></i></span>',
+            ))
             ->add('updatedAt', 'date')
             ->add('', 'action')
         ;

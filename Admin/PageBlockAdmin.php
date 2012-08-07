@@ -9,6 +9,7 @@ class PageBlockAdmin extends Admin
     public function configure()
     {
         $this->searchFields = array('type', 'name');
+        $this->controller = 'MsiPageBundle:PageBlock:';
     }
 
     public function buildIndexTable($builder)
