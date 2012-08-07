@@ -49,10 +49,9 @@ class PageBlockAdmin extends Admin
     public function buildFilterForm($builder)
     {
         $builder->add('pages', 'entity', array(
-            'multiple' => true,
             'class' => 'MsiPageBundle:Page',
-            'attr' => array('data-placeholder' => '-- '.$this->container->get('translator')->transchoice('entity.Page', 2).' --', 'class' => 'chosenify'),
             'label' => ' ',
+            'empty_value' => '-- '.$this->container->get('translator')->transchoice('entity.Page', 1).' --',
         ));
     }
 }
