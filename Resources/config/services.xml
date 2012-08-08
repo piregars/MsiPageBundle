@@ -19,7 +19,6 @@
         <!-- Page Admin -->
         <service id="msi_page_page_admin" parent="msi_admin.admin" class="Msi\Bundle\PageBundle\Admin\PageAdmin">
             <argument type="service" id="msi_page.page_manager" />
-
             <tag name="msi.admin"></tag>
         </service>
         <!-- PageBlock Manager -->
