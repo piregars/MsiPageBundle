@@ -21,14 +21,13 @@ class PageTranslation
     protected $id;
 
     /**
-     * @Gedmo\Sluggable(slugField="slug")
      * @ORM\Column()
      * @Assert\NotBlank()
      */
     protected $title;
 
     /**
-     * @Gedmo\Slug
+     * @Gedmo\Slug(fields={"title"})
      * @ORM\Column()
      */
     protected $slug;
