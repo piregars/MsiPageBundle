@@ -20,7 +20,7 @@ class PageController extends ContainerAware
         } else {
             $criteria['a.home'] = true;
         }
-        $page = $this->container->get('msi_page_page_admin')->getModelManager()->findBy($criteria, array('a.blocks' => 'b'), array('b.position' => 'ASC'))->getQuery()->getResult();
+        $page = $this->container->get('msi_page_page_admin')->getObjectManager()->findBy($criteria, array('a.blocks' => 'b'), array('b.position' => 'ASC'))->getQuery()->getResult();
 
         if (!isset($page[0])) {
             throw new NotFoundHttpException();

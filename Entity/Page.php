@@ -187,6 +187,6 @@ class Page extends Translatable
 
     public function __toString()
     {
-        return $this->getTranslation()->getTitle();
+        return $this->getTranslation()->getTitle() ?: 'n/a';
     }
 }
