@@ -72,6 +72,7 @@ class Page extends Translatable
         $this->createdAt = new \DateTime();
         $this->updatedAt = new \DateTime();
         $this->enabled = false;
+        $this->home = false;
         $this->blocks = new ArrayCollection();
         $this->translations = new ArrayCollection();
     }
