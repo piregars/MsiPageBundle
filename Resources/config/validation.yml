@@ -1,0 +1,4 @@
+Msi\Bundle\PageBundle\Entity\PageTranslation:
+    properties:
+        title:
+            - NotBlank: ~

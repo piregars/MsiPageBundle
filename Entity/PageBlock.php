@@ -4,7 +4,6 @@ namespace Msi\Bundle\PageBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
-use Symfony\Component\Validator\Constraints as Assert;
 
 use Msi\Bundle\BlockBundle\Entity\Block as BaseBlock;
 

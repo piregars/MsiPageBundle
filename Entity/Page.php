@@ -38,6 +38,11 @@ class Page extends Translatable
     protected $js;
 
     /**
+     * @ORM\Column(nullable=true)
+     */
+    protected $route;
+
+    /**
      * @ORM\Column(type="boolean")
      */
     protected $enabled;
@@ -121,6 +126,18 @@ class Page extends Translatable
         return $this;
     }
 
+    public function getRoute()
+    {
+        return $this->route;
+    }
+
+    public function setRoute($route)
+    {
+        $this->route = $route;
+
+        return $this;
+    }
+
     public function getHome()
     {
         return $this->home;
@@ -188,6 +205,6 @@ class Page extends Translatable
 
     public function __toString()
     {
-        return $this->getTranslation()->getTitle() ?: 'n/a';
+        return $this->getTranslation()->getTitle();
     }
 }
