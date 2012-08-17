@@ -9,7 +9,7 @@ class PageAdmin extends Admin
 {
     public function configure()
     {
-        $this->searchFields = array('title');
+        $this->searchFields = array('t.title');
     }
 
     public function buildIndexTable($builder)

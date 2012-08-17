@@ -2,9 +2,9 @@
 
 namespace Msi\Bundle\PageBundle\Controller;
 
-use Msi\Bundle\AdminBundle\Controller\CrudController as BaseController;
+use Msi\Bundle\AdminBundle\Controller\AdminController;
 
-class PageBlockController extends BaseController
+class PageBlockController extends AdminController
 {
     protected function configureJoins(&$joins)
     {

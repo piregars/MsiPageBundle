@@ -2,9 +2,9 @@
 
 namespace Msi\Bundle\PageBundle\Entity;
 
-use Msi\Bundle\AdminBundle\Entity\ObjectManager;
+use Msi\Bundle\AdminBundle\Entity\BaseManager;
 
-class PageManager extends ObjectManager
+class PageManager extends BaseManager
 {
     public function findByRoute($route)
     {

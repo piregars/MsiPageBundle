@@ -22,7 +22,7 @@ class UpdatePagesCommand extends ContainerAwareCommand
     {
         $this->update($output);
 
-        $output->writeln("<info>done!</info>");
+        $output->writeln("<comment>Done!</comment>");
     }
 
     protected function update($output)
@@ -32,15 +32,17 @@ class UpdatePagesCommand extends ContainerAwareCommand
         foreach ($this->getContainer()->get('router')->getRouteCollection()->all() as $name => $route) {
             $page = $pageManager->findByRoute($name);
 
-            if ($name !== 'msi_page_show' && !isset($page[0]) && !preg_match('@admin@', $name) && !preg_match('@^_@', $name)) {
+            if ($name && $name !== 'msi_page_show' && !isset($page[0]) && !preg_match('@admin|security@', $name) && !preg_match('@^_@', $name)) {
                 $page = $pageManager->create();
                 $page
                     ->setEnabled(true)
                     ->setRoute($name)
-                    ->setTemplate('ArmrsMainBundle::layout.html.twig')
+                    ->setTemplate('MsiMainBundle::layout.html.twig')
                 ;
-                $page->createTranslations('Msi\Bundle\PageBundle\Entity\PageTranslation', $this->getContainer()->getParameter('msi_admin.locales'));
-                $page->getTranslation()->setTitle($name);
+                $page->createTranslations('Msi\Bundle\PageBundle\Entity\PageTranslation', $this->getContainer()->getParameter('msi_admin.app_locales'));
+                foreach ($page->getTranslations() as $trans) {
+                    $trans->setTitle($name);
+                }
                 $pageManager->save($page);
                 $output->writeln("<info>CREATE</info> ".$name);
             }

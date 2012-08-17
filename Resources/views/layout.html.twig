@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="keywords" content="{% block meta_keywords %}{{ page.translation.metaKeywords }}{% endblock meta_keywords %}">
+        <meta name="description" content="{% block meta_description %}{{ page.translation.metaDescription }}{% endblock meta_description %}">
+        <title>{% block title %}{{ page.translation.title }}{% endblock %}{% block brand %} - INSERT PROJECT NAME HERE{% endblock brand %}</title>
+        {% block css %}
+            {{ page.css|raw }}
+        {% endblock css %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    </head>
+    <body>
+        {% block body %}{% endblock body %}
+        {% block js %}
+            {{ page.js|raw }}
+        {% endblock js %}
+    </body>
+</html>
