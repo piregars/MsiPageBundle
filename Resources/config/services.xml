@@ -22,6 +22,11 @@
             <argument type="service" id="msi_page.page_manager" />
             <tag name="msi.admin"></tag>
         </service>
+
+        <service id="msi_page.page.twig.extension" class="Msi\Bundle\PageBundle\Twig\Extension\PageExtension" public="false">
+            <tag name="twig.extension" />
+            <argument type="service" id="service_container" />
+        </service>
     </services>
 
 </container>
