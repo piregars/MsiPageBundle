@@ -1,0 +1,6 @@
+{% extends '::base.html.twig' %}
+{% block meta_keywords %}{{ page.translation.metaKeywords }}{% endblock meta_keywords %}
+{% block meta_description %}{{ page.translation.metaDescription }}{% endblock meta_description %}
+{% block title %}{{ page.translation.title }}{% block brand %} - INSERT PROJECT NAME HERE{% endblock brand %}{% endblock %}
+{% block css %}{{ page.css|raw }}{% endblock css %}
+{% block js %}{{ page.js|raw }}{% endblock js %}

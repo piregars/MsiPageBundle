@@ -5,20 +5,6 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="msi_page.page_pool" class="Msi\Bundle\PageBundle\Pool\PagePool" />
-
-        <service id="msi_page.response_listener" class="Msi\Bundle\PageBundle\EventListener\ResponseListener">
-            <argument type="service" id="templating" />
-            <argument type="service" id="msi_page.page_pool" />
-            <tag name="kernel.event_listener" event="kernel.response" method="onKernelResponse" />
-        </service>
-
-        <service id="msi_page.request_listener" class="Msi\Bundle\PageBundle\EventListener\RequestListener">
-            <argument type="service" id="msi_page.page_manager" />
-            <argument type="service" id="msi_page.page_pool" />
-            <tag name="kernel.event_listener" event="kernel.request" method="onKernelRequest" />
-        </service>
-
         <service id="msi_page.page_manager" class="Msi\Bundle\PageBundle\Entity\PageManager" parent="msi_admin.base_manager">
             <argument>Msi\Bundle\PageBundle\Entity\Page</argument>
         </service>
