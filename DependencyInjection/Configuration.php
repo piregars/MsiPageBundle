@@ -23,8 +23,21 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
                 ->arrayNode('templates')
-                ->useAttributeAsKey('name')
-                ->prototype('scalar')->end()
+                    ->useAttributeAsKey('name')
+                    ->prototype('scalar')->end()
+                ->end()
+                ->arrayNode('route_whitelist')
+                    ->prototype('scalar')->end()
+                ->end()
+                ->arrayNode('route_whitelist_pattern')
+                    ->prototype('scalar')->end()
+                ->end()
+                ->arrayNode('route_blacklist')
+                    ->prototype('scalar')->end()
+                ->end()
+                ->arrayNode('route_blacklist_pattern')
+                    ->prototype('scalar')->end()
+                ->end()
             ->end()
         ;
 

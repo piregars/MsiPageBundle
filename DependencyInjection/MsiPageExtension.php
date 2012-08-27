@@ -22,9 +22,18 @@ class MsiPageExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
-        $container->setParameter('msi_page.template_choices', $config['templates']);
-
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
+
+        $this->registerConfiguration($config, $container);
+    }
+
+    private function registerConfiguration($config, ContainerBuilder $container)
+    {
+        $container->setParameter('msi_page.template_choices', $config['templates']);
+        $container->setParameter('msi_page.route_whitelist', $config['route_whitelist']);
+        $container->setParameter('msi_page.route_whitelist_pattern', $config['route_whitelist_pattern']);
+        $container->setParameter('msi_page.route_blacklist', $config['route_blacklist']);
+        $container->setParameter('msi_page.route_blacklist_pattern', $config['route_blacklist_pattern']);
     }
 }

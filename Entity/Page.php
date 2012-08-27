@@ -38,7 +38,7 @@ class Page extends Translatable
     protected $js;
 
     /**
-     * @ORM\Column(nullable=true)
+     * @ORM\Column(nullable=true, unique=true)
      */
     protected $route;
 
