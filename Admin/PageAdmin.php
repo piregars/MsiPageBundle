@@ -31,6 +31,7 @@ class PageAdmin extends Admin
         $builder
             ->add('template', 'choice', array('choices' => $this->container->getParameter('msi_page.template_choices')))
             ->add('home', 'checkbox', array())
+            ->add('route')
             ->add('css', 'textarea')
             ->add('js', 'textarea')
             ->add('translations', 'collection', array('label' => ' ', 'type' => new PageTranslationType(), 'options' => array(
