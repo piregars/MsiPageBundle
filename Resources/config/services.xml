@@ -4,6 +4,10 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
+    <parameters>
+        <parameter key="msi_page.decorate_strategy.class">Msi\Bundle\PageBundle\Entity\DecorateStrategy</parameter>
+    </parameters>
+
     <services>
         <service id="msi_page.page_manager" class="Msi\Bundle\PageBundle\Entity\PageManager" parent="msi_admin.base_manager">
             <argument>Msi\Bundle\PageBundle\Entity\Page</argument>
@@ -26,6 +30,13 @@
         <service id="msi_page.page.twig.extension" class="Msi\Bundle\PageBundle\Twig\Extension\PageExtension" public="false">
             <tag name="twig.extension" />
             <argument type="service" id="service_container" />
+        </service>
+
+        <service id="msi_page.decorate_strategy" class="%msi_page.decorate_strategy.class%">
+            <argument>%msi_page.route_whitelist%</argument>
+            <argument>%msi_page.route_whitelist_patterns%</argument>
+            <argument>%msi_page.route_blacklist%</argument>
+            <argument>%msi_page.route_blacklist_patterns%</argument>
         </service>
     </services>
 

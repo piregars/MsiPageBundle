@@ -32,8 +32,8 @@ class MsiPageExtension extends Extension
     {
         $container->setParameter('msi_page.template_choices', $config['templates']);
         $container->setParameter('msi_page.route_whitelist', $config['route_whitelist']);
-        $container->setParameter('msi_page.route_whitelist_pattern', $config['route_whitelist_pattern']);
+        $container->setParameter('msi_page.route_whitelist_patterns', $config['route_whitelist_patterns']);
         $container->setParameter('msi_page.route_blacklist', $config['route_blacklist']);
-        $container->setParameter('msi_page.route_blacklist_pattern', $config['route_blacklist_pattern']);
+        $container->setParameter('msi_page.route_blacklist_patterns', $config['route_blacklist_patterns']);
     }
 }

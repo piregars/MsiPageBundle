@@ -32,19 +32,7 @@ class UpdatePagesCommand extends ContainerAwareCommand
         $pageManager = $this->getContainer()->get('msi_page.page_manager');
 
         foreach ($this->getContainer()->get('router')->getRouteCollection()->all() as $name => $route) {
-            if (!$this->checkWhitelist($name)) {
-                continue;
-            }
-
-            if (!$this->checkWhitelistPattern($name)) {
-                continue;
-            }
-
-            if (!$this->checkBlacklist($name)) {
-                continue;
-            }
-
-            if (!$this->checkBlacklistPattern($name)) {
+            if (!$this->getContainer()->get('msi_page.decorate_strategy')->isRouteDecorable($name)) {
                 continue;
             }
 
@@ -65,59 +53,5 @@ class UpdatePagesCommand extends ContainerAwareCommand
             $pageManager->save($page);
             $output->writeln("<info>CREATE</info> ".$name);
         }
-    }
-
-    protected function checkWhitelist($name)
-    {
-        $whitelist = $this->getContainer()->getParameter('msi_page.route_whitelist');
-        if (empty($whitelist) || in_array($name, $whitelist)) {
-            return true;
-        }
-
-        return false;
-    }
-
-    protected function checkWhitelistPattern($name)
-    {
-        $whitelistPattern = $this->getContainer()->getParameter('msi_page.route_whitelist_pattern');
-
-        if (empty($whitelistPattern)) {
-            return true;
-        }
-
-        foreach ($whitelistPattern as $pattern) {
-            if (!preg_match($pattern, $name)) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    protected function checkBlacklist($name)
-    {
-        $blacklist = $this->getContainer()->getParameter('msi_page.route_blacklist');
-        if (empty($blacklist) || !in_array($name, $blacklist)) {
-            return true;
-        }
-
-        return false;
-    }
-
-    protected function checkBlacklistPattern($name)
-    {
-        $blacklistPattern = $this->getContainer()->getParameter('msi_page.route_blacklist_pattern');
-
-        if (empty($blacklistPattern)) {
-            return true;
-        }
-
-        foreach ($blacklistPattern as $pattern) {
-            if (preg_match($pattern, $name)) {
-                return false;
-            }
-        }
-
-        return true;
     }
 }
