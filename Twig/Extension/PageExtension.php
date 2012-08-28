@@ -2,13 +2,14 @@
 
 namespace Msi\Bundle\PageBundle\Twig\Extension;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class PageExtension extends \Twig_Extension
 {
     private $container;
     private $pageManager;
 
-    public function __construct($container)
+    public function __construct(ContainerInterface $container)
     {
         $this->container = $container;
         $this->pageManager = $this->container->get('msi_page.page_manager');
