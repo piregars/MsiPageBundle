@@ -25,7 +25,7 @@ class PageExtension extends \Twig_Extension
         }
 
         if (!$page) {
-            throw new NotFoundHttpException('"'.$route.'" is supposed to be decorated, but no page was found. Maybe you should run app/console msi:page:update or manually create the page.');
+            throw new NotFoundHttpException('Route "'.$route.'" is decorable but no page was found. Try to run app/console msi:page:update or manually create the page.');
         }
 
         return array('page' => $page);
