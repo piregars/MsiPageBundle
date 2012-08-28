@@ -57,8 +57,8 @@ class DecorateStrategy
             return true;
         }
 
-        foreach ($this->whitelistPatterns as $patterns) {
-            if (!preg_match('@'.$patterns.'@', $name)) {
+        foreach ($this->whitelistPatterns as $pattern) {
+            if (!preg_match('@'.$pattern.'@', $name)) {
                 return false;
             }
         }
@@ -81,8 +81,8 @@ class DecorateStrategy
             return true;
         }
 
-        foreach ($this->blacklistPatterns as $patterns) {
-            if (preg_match('@'.$patterns.'@', $name)) {
+        foreach ($this->blacklistPatterns as $pattern) {
+            if (preg_match('@'.$pattern.'@', $name)) {
                 return false;
             }
         }
