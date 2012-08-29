@@ -16,11 +16,11 @@ class PageAdmin extends Admin
     {
         $builder
             ->add('enabled', 'boolean')
-            ->add('title')
             ->add('home', 'boolean', array(
                 'label_true' => '<span class="badge badge-success"><i class="icon-home icon-white"><span class="hide">1</span></i></span>',
                 'label_false' => '<span class="badge"><i class="icon-home icon-white"><span class="hide">0</span></i></span>',
             ))
+            ->add('title')
             ->add('updatedAt', 'date')
             ->add('', 'action')
         ;
@@ -30,7 +30,6 @@ class PageAdmin extends Admin
     {
         $builder
             ->add('template', 'choice', array('choices' => $this->container->getParameter('msi_page.template_choices')))
-            ->add('home', 'checkbox', array())
             ->add('route')
             ->add('css', 'textarea')
             ->add('js', 'textarea')
