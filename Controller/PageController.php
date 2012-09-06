@@ -13,13 +13,15 @@ class PageController extends ContainerAware
     {
         $slug = $this->container->get('request')->attributes->get('slug');
         $criteria = array('a.enabled' => true);
+        $join = array('a.blocks' => 'b');
 
         if ($slug) {
             $criteria['t.slug'] = $slug;
+            $join['a.translations'] = 't';
         } else {
             $criteria['a.home'] = true;
         }
-        $qb = $this->container->get('msi_page_page_admin')->getObjectManager()->findBy($criteria, array('a.blocks' => 'b'), array('b.position' => 'ASC'));
+        $qb = $this->container->get('msi_page_page_admin')->getObjectManager()->findBy($criteria, $join, array('b.position' => 'ASC'));
 
         $qb->andWhere($qb->expr()->isNull('a.route'));
 
