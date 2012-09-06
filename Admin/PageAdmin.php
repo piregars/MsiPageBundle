@@ -7,11 +7,6 @@ use Msi\Bundle\PageBundle\Form\Type\PageTranslationType;
 
 class PageAdmin extends Admin
 {
-    public function configure()
-    {
-        $this->searchFields = array('t.title');
-    }
-
     public function buildIndexTable($builder)
     {
         $builder
