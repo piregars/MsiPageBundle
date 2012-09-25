@@ -58,12 +58,12 @@ class DecorateStrategy
         }
 
         foreach ($this->whitelistPatterns as $pattern) {
-            if (!preg_match('@'.$pattern.'@', $name)) {
-                return false;
+            if (preg_match('@'.$pattern.'@', $name)) {
+                return true;
             }
         }
 
-        return true;
+        return false;
     }
 
     protected function checkBlacklist($name)
