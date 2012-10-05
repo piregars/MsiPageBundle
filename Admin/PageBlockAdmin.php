@@ -3,6 +3,7 @@
 namespace Msi\Bundle\PageBundle\Admin;
 
 use Msi\Bundle\AdminBundle\Admin\Admin;
+use Doctrine\ORM\EntityRepository;
 
 class PageBlockAdmin extends Admin
 {
@@ -52,7 +53,13 @@ class PageBlockAdmin extends Admin
         $builder->add('pages', 'entity', array(
             'class' => 'MsiPageBundle:Page',
             'label' => ' ',
-            'empty_value' => '-- '.$this->container->get('translator')->transchoice('entity.Page', 1).' --',
+            'empty_value' => '- '.$this->container->get('translator')->transchoice('entity.Page', 1).' -',
+            'query_builder' => function(EntityRepository $er) {
+                return $er->createQueryBuilder('a')
+                    ->leftJoin('a.translations', 't')
+                    ->addSelect('t')
+                ;
+            },
         ));
     }
 }
