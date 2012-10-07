@@ -19,14 +19,19 @@ class PageExtension extends \Twig_Extension
     {
         $route = $this->container->get('request')->attributes->get('_route');
 
-        if ($this->container->get('msi_page.decorate_strategy')->isRouteDecorable($route)) {
-            $page = $this->pageManager->findByRoute($route);
-        } else {
-            $page = $this->pageManager->findOneOrCreate();
-        }
+        // if ($this->container->get('msi_page.decorate_strategy')->isRouteDecorable($route)) {
+        //     $page = $this->pageManager->findByRoute($route);
+        // } else {
+        //     $page = $this->pageManager->findOneOrCreate();
+        // }
 
+        // if (!$page) {
+        //     throw new NotFoundHttpException('Route "'.$route.'" is decorable but no page was found. Try to run app/console msi:page:update or manually create the page.');
+        // }
+
+        $page = $this->pageManager->findByRoute($route);
         if (!$page) {
-            throw new NotFoundHttpException('Route "'.$route.'" is decorable but no page was found. Try to run app/console msi:page:update or manually create the page.');
+            $page = $this->pageManager->findOneOrCreate();
         }
 
         return array('page' => $page);
