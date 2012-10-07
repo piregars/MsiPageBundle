@@ -10,6 +10,8 @@ class PageBlockManager extends BaseManager
 {
     protected function configureAdminListQuery(QueryBuilder $qb, Admin $admin)
     {
-        $qb->andWhere('a.isSuperAdmin = true');
+        if (!$admin->getContainer()->get('security.context')->isGranted('ROLE_SUPER_ADMIN')) {
+            $qb->andWhere('a.isSuperAdmin = false');
+        }
     }
 }
