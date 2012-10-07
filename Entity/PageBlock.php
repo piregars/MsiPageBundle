@@ -26,10 +26,28 @@ class PageBlock extends BaseBlock
      */
     protected $pages;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $isSuperAdmin;
+
     public function __construct()
     {
         parent::__construct();
         $this->pages = new ArrayCollection();
+        $this->isSuperAdmin = false;
+    }
+
+    public function getIsSuperAdmin()
+    {
+        return $this->isSuperAdmin;
+    }
+
+    public function setIsSuperAdmin($isSuperAdmin)
+    {
+        $this->isSuperAdmin = $isSuperAdmin;
+
+        return $this;
     }
 
     public function getId()

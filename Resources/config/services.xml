@@ -13,7 +13,7 @@
             <argument>Msi\Bundle\PageBundle\Entity\Page</argument>
         </service>
 
-        <service id="msi_page.page_block_manager" class="%msi_admin.base_manager.class%" parent="msi_admin.base_manager">
+        <service id="msi_page.page_block_manager" class="Msi\Bundle\PageBundle\Entity\PageBlockManager" parent="msi_admin.base_manager">
             <argument>Msi\Bundle\PageBundle\Entity\PageBlock</argument>
         </service>
 
