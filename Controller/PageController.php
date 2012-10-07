@@ -21,7 +21,7 @@ class PageController extends ContainerAware
         } else {
             $criteria['a.home'] = true;
         }
-        $qb = $this->container->get('msi_page_page_admin')->getObjectManager()->findBy($criteria, $join, array('b.position' => 'ASC'));
+        $qb = $this->container->get('msi_page_page_admin')->getObjectManager()->getFindByQueryBuilder($criteria, $join, array('b.position' => 'ASC'));
 
         $qb->andWhere($qb->expr()->isNull('a.route'));
 
