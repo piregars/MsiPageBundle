@@ -10,6 +10,6 @@ class PageBlockManager extends BaseManager
 {
     protected function configureAdminListQuery(QueryBuilder $qb, Admin $admin)
     {
-        die('salut');
+        $qb->andWhere('a.isSuperAdmin = true');
     }
 }
