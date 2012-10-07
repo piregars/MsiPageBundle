@@ -22,7 +22,6 @@ class PageBlockAdmin extends Admin
 
         if ($this->getContainer()->get('security.context')->isGranted('ROLE_SUPER_ADMIN')) {
             $builder->add('isSuperAdmin', 'boolean', array(
-                'label' => 'SuperAdmin',
                 'label_true' => '<span class="badge badge-info"><i class="icon-user icon-white"><span class="hide">1</span></i></span>',
                 'label_false' => '<span class="badge"><i class="icon-user icon-white"><span class="hide">0</span></i></span>',
             ));
