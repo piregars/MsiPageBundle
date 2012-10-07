@@ -18,6 +18,13 @@ class PageBlockAdmin extends Admin
     {
         $builder
             ->add('enabled', 'boolean', array('label' => 'status'))
+        ;
+
+        if ($this->getContainer()->get('security.context')->isGranted('ROLE_SUPER_ADMIN')) {
+            $builder->add('isSuperAdmin', 'boolean');
+        }
+
+        $builder->
             ->add('name')
             ->add('pages', 'collection')
             ->add('updatedAt', 'date')
