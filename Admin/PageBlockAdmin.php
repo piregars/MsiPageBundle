@@ -10,14 +10,14 @@ class PageBlockAdmin extends Admin
     public function configure()
     {
         $this->options = array(
-            'search_fields' => array('type', 'name', array('label' => 'status')),
+            'search_fields' => array('type', 'name'),
         );
     }
 
     public function buildIndexTable($builder)
     {
         $builder
-            ->add('enabled', 'boolean')
+            ->add('enabled', 'boolean', array('label' => 'status'))
             ->add('name')
             ->add('setting.name', 'text', array('label' => 'position'))
             ->add('pages', 'collection')
