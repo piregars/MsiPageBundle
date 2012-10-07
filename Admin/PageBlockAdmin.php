@@ -27,7 +27,7 @@ class PageBlockAdmin extends Admin
             ));
         }
 
-        $builder->
+        $builder
             ->add('name')
             ->add('pages', 'collection')
             ->add('updatedAt', 'date')
