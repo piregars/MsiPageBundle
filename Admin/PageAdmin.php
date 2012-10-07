@@ -10,7 +10,7 @@ class PageAdmin extends Admin
     public function buildIndexTable($builder)
     {
         $builder
-            ->add('enabled', 'boolean')
+            ->add('enabled', 'boolean', array('label' => 'status'))
             ->add('home', 'boolean', array(
                 'label_true' => '<span class="badge badge-success"><i class="icon-home icon-white"><span class="hide">1</span></i></span>',
                 'label_false' => '<span class="badge"><i class="icon-home icon-white"><span class="hide">0</span></i></span>',

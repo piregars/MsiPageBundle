@@ -10,7 +10,7 @@ class PageBlockAdmin extends Admin
     public function configure()
     {
         $this->options = array(
-            'search_fields' => array('type', 'name'),
+            'search_fields' => array('type', 'name', array('label' => 'status')),
         );
     }
 
