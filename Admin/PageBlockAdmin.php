@@ -11,6 +11,7 @@ class PageBlockAdmin extends Admin
     {
         $this->options = array(
             'search_fields' => array('type', 'name'),
+            'controller' => 'MsiPageBundle:PageBlock:',
         );
     }
 
@@ -43,6 +44,7 @@ class PageBlockAdmin extends Admin
         if ($typeId) {
             $blockType = $this->container->get($typeId);
             $blockType->buildForm($builder);
+            $builder->add('pages', 'entity', array('multiple' => true, 'expanded' => true, 'class' => 'MsiPageBundle:Page'));
         } else {
             $builder
                 ->add('type', 'choice', array(
@@ -54,7 +56,6 @@ class PageBlockAdmin extends Admin
                 ))
             ;
         }
-        $builder->add('pages', 'entity', array('multiple' => true, 'expanded' => true, 'class' => 'MsiPageBundle:Page'));
     }
 
     public function buildFilterForm($builder)
