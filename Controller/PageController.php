@@ -12,8 +12,8 @@ class PageController extends ContainerAware
     public function showAction()
     {
         $slug = $this->container->get('request')->attributes->get('slug');
-        $criteria = array('a.enabled' => true);
-        $join = array('a.blocks' => 'b');
+        $criteria = array('t.published' => true);
+        $join = array('a.translations' => 't', 'a.blocks' => 'b');
 
         if ($slug) {
             $criteria['t.slug'] = $slug;
