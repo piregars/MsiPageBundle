@@ -50,6 +50,28 @@ class PageTranslation
      */
     protected $locale;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $published;
+
+    public function __construct()
+    {
+        $this->published = false;
+    }
+
+    public function getPublished()
+    {
+        return $this->published;
+    }
+
+    public function setPublished($published)
+    {
+        $this->published = $published;
+
+        return $this;
+    }
+
     public function getId()
     {
         return $this->id;

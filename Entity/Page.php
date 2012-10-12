@@ -45,11 +45,6 @@ class Page extends Translatable
     /**
      * @ORM\Column(type="boolean")
      */
-    protected $enabled;
-
-    /**
-     * @ORM\Column(type="boolean")
-     */
     protected $home;
 
     /**
@@ -76,7 +71,6 @@ class Page extends Translatable
     {
         $this->createdAt = new \DateTime();
         $this->updatedAt = new \DateTime();
-        $this->enabled = false;
         $this->home = false;
         $this->blocks = new ArrayCollection();
         $this->translations = new ArrayCollection();
@@ -158,18 +152,6 @@ class Page extends Translatable
     public function setTemplate($template)
     {
         $this->template = $template;
-
-        return $this;
-    }
-
-    public function getEnabled()
-    {
-        return $this->enabled;
-    }
-
-    public function setEnabled($enabled)
-    {
-        $this->enabled = $enabled;
 
         return $this;
     }
