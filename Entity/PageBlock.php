@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Msi\Bundle\BlockBundle\Entity\Block as BaseBlock;
 
 /**
- * @ORM\Table(name="msi_page_page_block")
+ * @ORM\Table(name="page_block")
  * @ORM\Entity
  */
 class PageBlock extends BaseBlock
@@ -22,7 +22,7 @@ class PageBlock extends BaseBlock
 
     /**
      * @ORM\ManyToMany(targetEntity="Page", inversedBy="blocks", cascade={"persist"})
-     * @ORM\JoinTable(name="msi_page_pages_page_blocks")
+     * @ORM\JoinTable(name="page_blocks_pages")
      */
     protected $pages;
 

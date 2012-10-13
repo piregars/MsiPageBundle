@@ -8,7 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Msi\Bundle\AdminBundle\Entity\Translatable;
 
 /**
- * @ORM\Table(name="msi_page_page")
+ * @ORM\Table(name="page_page")
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */
